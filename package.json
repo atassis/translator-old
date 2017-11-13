@@ -5,10 +5,11 @@
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
-    "watch": "nodemon src/index.js",
+    "watch": "nodemon --inspect=9229 src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "migrate:latest": "knex migrate:latest --knexfile src/knexfile.js",
-    "migrate:rollback": "knex migrate:rollback --knexfile src/knexfile.js"
+    "migrate:latest": "knex --knexfile src/knexfile.js migrate:latest",
+    "migrate:rollback": "knex --knexfile src/knexfile.js migrate:rollback",
+    "migrate:make": "knex --knexfile src/knexfile.js migrate:make"
   },
   "engines": {
     "node": "~8.9.1"
@@ -19,8 +20,11 @@
   "private": true,
   "dependencies": {
     "bluebird": "3.5.1",
+    "bookshelf": "0.10.4",
+    "boom": "7.1.1",
     "knex": "0.14.0",
     "koa": "2.4.1",
+    "koa-body": "2.5.0",
     "koa-router": "7.2.1",
     "mysql": "2.15.0",
     "pino": "4.10.0"
