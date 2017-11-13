@@ -5,6 +5,10 @@ const knex = Knex({
   client: 'mysql',
   connection,
   useNullAsDefault: true,
+  pool: {
+    min: 1,
+    max: 8,
+  },
 });
 
 module.exports = knex;
