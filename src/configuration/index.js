@@ -12,4 +12,8 @@ const conf = {
   },
 };
 
+const environment = process.env;
+if (environment.DB_URL) {
+  conf.db.connection = environment.DB_URL;
+}
 module.exports = conf;
