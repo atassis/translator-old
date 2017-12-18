@@ -8,10 +8,6 @@ router.use(restError, restModifier);
 
 router.use('/word', word.routes(), word.allowedMethods());
 
-router.get('/', async (ctx) => {
-  ctx.body = 'asdasd';
-});
-
 router.all('*', async (ctx) => {
   ctx.status = 404;
   ctx.body = '404';

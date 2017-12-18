@@ -22,5 +22,5 @@ COPY --from=dependencies /root/app/node_modules ./node_modules
 # copy app sources
 COPY src ./src
 # expose port and define CMD
-EXPOSE 3010
+EXPOSE 3000
 CMD ["start"]

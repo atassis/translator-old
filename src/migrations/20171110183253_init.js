@@ -2,11 +2,11 @@
 exports.up = function (knex, Promise) {
   const words = knex.schema.createTable('words', (t) => {
     t.increments('ID').unsigned().primary();
-    t.dateTime('createdAt').notNull();
-    t.dateTime('updatedAt').nullable();
+    t.dateTime('createdAt').notNull().defaultTo(knex.raw('now()'));
+    t.dateTime('updatedAt').notNull().defaultTo(knex.raw('now() ON UPDATE CURRENT_TIMESTAMP'));
     t.dateTime('deletedAt').nullable();
     t.string('word').notNullable();
-    t.string('language').notNullable();
+    t.string('language', 2).notNullable();
     t.index(['word', 'language']);
     t.unique(['word', 'language']);
     t.text('decription').nullable();
