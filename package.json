@@ -4,8 +4,11 @@
   "description": "Translator written in Node.JS",
   "main": "src/index.js",
   "scripts": {
+    "build": "babel src/ -d build/",
+    "prepublish": "npm run build",
+    "flow": "flow",
     "start": "node src/index.js",
-    "watch": "nodemon --inspect=9229 src/index.js",
+    "watch": "nodemon --inspect=9229 src/index.js --exec babel-node",
     "test": "echo \"Error: no test specified\" && exit 1",
     "migrate:latest": "knex --knexfile src/knexfile.js migrate:latest",
     "migrate:rollback": "knex --knexfile src/knexfile.js migrate:rollback",
@@ -31,15 +34,28 @@
   },
   "devDependencies": {
     "babel-cli": "6.26.0",
+    "babel-eslint": "8.0.3",
     "babel-plugin-transform-object-rest-spread": "6.26.0",
-    "eslint": "4.10.0",
+    "babel-preset-flow": "6.23.0",
+    "eslint": "4.13.1",
     "eslint-config-airbnb": "16.1.0",
+    "eslint-config-airbnb-flow": "1.0.2",
+    "eslint-plugin-flowtype": "2.40.1",
     "eslint-plugin-import": "2.8.0",
+    "flow-bin": "0.61.0",
     "nodemon": "1.12.1"
   },
+  "babel": {
+    "presets": [
+      "flow"
+    ]
+  },
   "eslintConfig": {
-    "extends": "airbnb/base",
+    "extends": [
+      "airbnb/base"
+    ],
     "plugins": [
+      "flowtype",
       "import"
     ],
     "settings": {
