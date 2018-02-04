@@ -19,5 +19,6 @@ const server = createServer(app.callback());
 
 server.listen(config.port, () => {
   const { address, port } = server.address();
+  // eslint-disable-next-line no-console
   console.log(`App is running on ${ address }:${ port }, development is ${ config.development }`);
 });

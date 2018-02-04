@@ -4,7 +4,7 @@ module.exports = async function (ctx, next) {
   try {
     await next();
   } catch (error) {
-    console.info(error);
+    console.info(error); // eslint-disable-line no-console
     if (error === null) {
       error = Boom.create(500, 'Undefined error', { timestamp: Date.now() });
     }

@@ -4,7 +4,7 @@ const conf = {
   secret: 'hehey',
   db: {
     connection: {
-      host: 'db',
+      host: 'localhost',
       user: 'root',
       password: 'privet',
       database: 'temp',
