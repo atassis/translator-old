@@ -39,7 +39,7 @@ router.post('/:word/translation', async ctx => {
   try {
     const word = await Word.where('word', wordString).fetch({ withRelated: 'translations' });
     const translation = await Word.where('word', trString).fetch({ withRelated: 'translations' });
-    // const att = await word.translations().attach([translation]);
+    const att = await word.translations().attach([translation]);
     ctx.body = { word, translation };
   } catch (error) {
     throw error;
